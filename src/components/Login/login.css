@@ -1,0 +1,52 @@
+.card {
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #f0f0f0;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.5rem;
+}
+
+input {
+  width: 95%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.row input {
+  margin: 10px 20px;
+}
+
+.forget-password {
+  text-align: end;
+  margin-right: 5px;
+}
+
+.btn-login, .btn-register, .btn-forget {
+  text-align: center;
+  margin: 20px 0;
+}
+
+h2 {
+  color: gray;
+  font-size: 58px;
+  font-weight: 700;
+  padding-top: 40%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+h4 {
+  font-size: 38px;
+  color: gray;
+}
+
+.right {
+  padding: 10% 15% 0 15%;
+}
+
+.signup {
+  margin-top: 5%;
+}
