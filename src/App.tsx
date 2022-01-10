@@ -1,15 +1,17 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css';
 import ForgetPassword from './components/Login/ForgetPassword';
-import Login from './components/Login/Login';
 import Signup from './components/Login/Signup';
+import Login from './components/Login/Login';
+import Lottery from "./components/Lottery";
 
 function App() {
+  const token = localStorage.getItem('token')
+
   return (
     <Router>
       <div className="App">
         <Routes>
+          {token && <Route path="/" element={<Lottery />} />}
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forget-password" element={<ForgetPassword />} />

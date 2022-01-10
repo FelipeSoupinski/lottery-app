@@ -4,7 +4,7 @@ const LoginLayout: React.FC = (props) => {
   return <section className="container">
     <div className="row">
       <div className="col">
-        <h2>The Greatest App for LOTTERY</h2>
+        <h2 className="logo">The Greatest App for LOTTERY</h2>
       </div>
       {props.children}
     </div>

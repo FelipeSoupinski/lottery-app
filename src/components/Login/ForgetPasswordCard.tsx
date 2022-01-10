@@ -3,16 +3,23 @@ import './login.css'
 
 const ForgetPasswordCard: React.FC = () => {
   return <div className="card">
-    <form>
-      <div className='row'>
-        <input type="email" placeholder='Email' />
-      </div>
-      <div className="row btn-forget">
-        <div className="col">
-          <button>Send Link</button>
+    <div className="card-body">
+      <form>
+        <div className='row'>
+          <input 
+          type="email" 
+          id='email'
+          name='email'
+          placeholder='Email'
+          className='form-control' />
         </div>
-      </div>
-    </form>
+        <div className="row btn-forget">
+          <div className="col">
+            <button className='btn btn-success'>Send Link</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 }
 
