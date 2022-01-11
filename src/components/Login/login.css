@@ -61,3 +61,17 @@ h4 {
   height: 18vh;
   border-radius: 50%;
 }
+
+.option {
+  background-color: gray;
+  color: white;
+  padding: 5px 8px;
+  width: max-content;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.option-selected {
+  background-color: blue;
+  border: #b6c504 solid thin;
+}
