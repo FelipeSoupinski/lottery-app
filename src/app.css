@@ -75,3 +75,17 @@ h4 {
   background-color: blue;
   border: #b6c504 solid thin;
 }
+
+.svg-container {
+  height: 100%;
+  cursor: pointer;
+}
+
+.svg-trash {
+  height: 100%;
+  vertical-align: middle;
+}
+
+.text-start {
+  text-align: start;
+}

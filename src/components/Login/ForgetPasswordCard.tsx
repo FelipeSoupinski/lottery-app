@@ -1,5 +1,4 @@
 import React from 'react'
-import './login.css'
 
 const ForgetPasswordCard: React.FC = () => {
   return <div className="card">

@@ -1,3 +1,4 @@
+import './app.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ForgetPassword from './components/Login/ForgetPassword';
 import NewBet from "./components/Lottery/NewBet";

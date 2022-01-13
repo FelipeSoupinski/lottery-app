@@ -38,7 +38,8 @@ const Lottery: React.FC<{}> = (props) => {
                 {
                   color: bet.color,
                   border: `2px solid ${bet.color}`,
-                  borderRadius: '45%'
+                  borderRadius: '45%',
+                  cursor: 'pointer'
                 }
               } onClick={onFilterHandler.bind(this, bet.name)}
               key={index} >
