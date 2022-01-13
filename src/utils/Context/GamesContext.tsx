@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import Game from "./Game";
+import Game from "../Game";
 
 type propsGamesContext = {
   state: Game[]
@@ -25,6 +25,15 @@ const DEFAULT_VALUE = {
       color: '#01ac65',
       qtde: 22,
       max_number: 7
+    },
+    {
+      numbers: '01, 02, 03, 04, 05, 06, 07, 13',
+      date: '30/11/2020',
+      price: 4.5,
+      name: 'Lotomania',
+      color: '#f79c31',
+      qtde: 50,
+      max_number: 20
     },
     {
       numbers: '01, 02, 03, 04, 05, 06, 07, 13',

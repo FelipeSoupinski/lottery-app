@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import BetState from "./BetState";
-import Bet from './Bet';
+import BetState from "../BetState";
+import Bet from '../Bet';
 
 type propsCartContext = {
   state: BetState

@@ -1,13 +1,14 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import GameItem from './GameItem';
 import Navbar from './Navbar';
 import Game from "../../utils/Game";
-import BetsContext from "../../utils/GamesContext";
+import DiffGames from "../../utils/DiffGame";
+import BetsContext from "../../utils/Context/GamesContext";
+import GamesFilterContext from "../../utils/Context/GamesFilterContext";
 
 const Lottery: React.FC<{}> = (props) => {
-  const [gamesFilter, setGamesFilter] = useState<Game[]>([])
-
+  const { state: gamesFilterState, setState: setGamesFilterState } = useContext(GamesFilterContext)
   const { state: betsState } = useContext(BetsContext)
 
   const token = localStorage.getItem('token')
@@ -18,12 +19,22 @@ const Lottery: React.FC<{}> = (props) => {
   }
 
   useEffect(() => {
-    setGamesFilter(betsState)
-  }, [betsState])
+    setGamesFilterState({ games: betsState, gameActive: gamesFilterState.gameActive })
+  }, [betsState, gamesFilterState.gameActive, setGamesFilterState])
 
   const onFilterHandler = (name: string) => {
-    setGamesFilter(betsState)
-    setGamesFilter(gamesFilter.filter((game) => game.name === name))
+    name === 'All' ? setGamesFilterState({ games: betsState, gameActive: '' })
+      : setGamesFilterState({ games: betsState, gameActive: name })
+  }
+
+  const getDiffGames = (games: Game[]) => {
+    const diffGames: DiffGames[] = []
+    games.forEach((game) => {
+      if (diffGames.findIndex((value) => value.name === game.name) === -1) {
+        diffGames.push({ name: game.name, color: game.color })
+      }
+    })
+    return diffGames
   }
 
   return <div>
@@ -33,7 +44,18 @@ const Lottery: React.FC<{}> = (props) => {
         <div className="col-3 gray">Recent Games</div>
         <div className="col-7 gray-sm">Filters:
           <div className="row">
-            {betsState.map((bet, index) => {
+            {<div className="col m-2 text-center" style={
+              {
+                color: 'black',
+                border: '2px solid black',
+                borderRadius: '45%',
+                cursor: 'pointer'
+              }
+            } onClick={onFilterHandler.bind(this, 'All')}
+              key={'all'} >
+              All
+            </div>}
+            {getDiffGames(betsState).map((bet, index) => {
               return <div className="col m-2 text-center" style={
                 {
                   color: bet.color,
@@ -42,7 +64,7 @@ const Lottery: React.FC<{}> = (props) => {
                   cursor: 'pointer'
                 }
               } onClick={onFilterHandler.bind(this, bet.name)}
-              key={index} >
+                key={index} >
                 {bet.name}
               </div>
             })}
@@ -54,15 +76,30 @@ const Lottery: React.FC<{}> = (props) => {
       </div>
       <div className="row">
         <div>
-          {gamesFilter.map((game, index) => {
-            return <GameItem
-              key={index}
-              numbers={game.numbers}
-              date={game.date}
-              price={game.price}
-              name={game.name}
-              color={game.color} />
-          })}
+          {
+            gamesFilterState.gameActive === '' ?
+              betsState.map((game, index) => {
+                return <GameItem
+                  key={index}
+                  numbers={game.numbers}
+                  date={game.date}
+                  price={game.price}
+                  name={game.name}
+                  color={game.color} />
+              })
+              :
+              gamesFilterState.games.map((game, index) => {
+                if (game.name === gamesFilterState.gameActive) {
+                  return <GameItem
+                    key={index}
+                    numbers={game.numbers}
+                    date={game.date}
+                    price={game.price}
+                    name={game.name}
+                    color={game.color} />
+                }
+              })
+          }
         </div>
       </div>
     </div>

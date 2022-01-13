@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import CartContext from "../../utils/CartContext"
+import CartContext from "../../utils/Context/CartContext"
 import CartItem from "./CartItem"
 
 const CardNewBet: React.FC<{}> = (props) => {
@@ -29,9 +29,11 @@ const CardNewBet: React.FC<{}> = (props) => {
       <p className="gray-sm">CART TOTAL: R$ {cartState.total}</p>
     </div>
     <div className="card-footer text-center">
-      <button className="btn btn-outline-success" onClick={onSaveHandler}>
-        <Link to="/">Save</Link>
-      </button>
+      <Link to="/">
+        <button className="btn btn-outline-success" onClick={onSaveHandler}>
+          Save
+        </button>
+      </Link>
     </div>
   </div>
 }
