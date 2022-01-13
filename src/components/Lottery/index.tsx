@@ -1,24 +1,29 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import BetItem from './BetItem';
+import { useEffect, useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import GameItem from './GameItem';
 import Navbar from './Navbar';
-import Bet from "../../utils/Bet";
+import Game from "../../utils/Game";
+import BetsContext from "../../utils/GamesContext";
 
-const Lottery: React.FC<{bets: Bet[]}> = (props) => {
-  const [bets, setBets] = useState<Bet[]>([])
-  const [betsFilter, setBetsFilter] = useState<Bet[]>([])
+const Lottery: React.FC<{}> = (props) => {
+  const [gamesFilter, setGamesFilter] = useState<Game[]>([])
+
+  const { state: betsState } = useContext(BetsContext)
+
+  const token = localStorage.getItem('token')
+  const navigate = useNavigate()
+
+  if (!token) {
+    navigate('/login')
+  }
 
   useEffect(() => {
-    setBets(props.bets)
-  }, [props.bets])
-
-  useEffect(() => {
-    setBetsFilter(bets)
-  }, [bets])
+    setGamesFilter(betsState)
+  }, [betsState])
 
   const onFilterHandler = (name: string) => {
-    setBetsFilter(bets)
-    setBetsFilter(betsFilter.filter((bet) => bet.name === name))
+    setGamesFilter(betsState)
+    setGamesFilter(gamesFilter.filter((game) => game.name === name))
   }
 
   return <div>
@@ -28,7 +33,7 @@ const Lottery: React.FC<{bets: Bet[]}> = (props) => {
         <div className="col-3 gray">Recent Games</div>
         <div className="col-7 gray-sm">Filters:
           <div className="row">
-            {bets.map((bet, index) => {
+            {betsState.map((bet, index) => {
               return <div className="col m-2 text-center" style={
                 {
                   color: bet.color,
@@ -48,14 +53,14 @@ const Lottery: React.FC<{bets: Bet[]}> = (props) => {
       </div>
       <div className="row">
         <div>
-          {betsFilter.map((bet, index) => {
-            return <BetItem
+          {gamesFilter.map((game, index) => {
+            return <GameItem
               key={index}
-              numbers={bet.numbers}
-              date={bet.date}
-              price={bet.price}
-              name={bet.name}
-              color={bet.color} />
+              numbers={game.numbers}
+              date={game.date}
+              price={game.price}
+              name={game.name}
+              color={game.color} />
           })}
         </div>
       </div>

@@ -1,4 +1,4 @@
-const BetItem: React.FC<{
+const GameItem: React.FC<{
   numbers: string,
   date: string,
   price: number,
@@ -16,4 +16,4 @@ const BetItem: React.FC<{
   </div>
 };
 
-export default BetItem;
+export default GameItem;
