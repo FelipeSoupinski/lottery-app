@@ -14,7 +14,7 @@ type propsNewBetContext = {
 
 const DEFAULT_VALUE = {
   state: {
-    gameSelected: new Game('', '', 0, '', '', 0, 0),
+    gameSelected: new Game('', 0, '', '', 0, 0),
     numbersSelected: [] as boolean[],
     countNumbersSelected: 0
   },

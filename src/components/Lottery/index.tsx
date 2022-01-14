@@ -1,14 +1,14 @@
 import { useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import GameItem from './GameItem';
 import Navbar from './Navbar';
-import Game from "../../utils/Game";
-import DiffGames from "../../utils/DiffGame";
-import BetsContext from "../../utils/Context/GamesContext";
-import GamesFilterContext from "../../utils/Context/GamesFilterContext";
+import BetItem from './BetItem';
+import BetsContext from "../../utils/Context/BetsContext";
+import GamesFilterContext from "../../utils/Context/BetsFilterContext";
+import GamesContext from "../../utils/Context/GamesContext";
 
 const Lottery: React.FC<{}> = (props) => {
-  const { state: gamesFilterState, setState: setGamesFilterState } = useContext(GamesFilterContext)
+  const { state: betsFilterState, setState: setBetsFilterState } = useContext(GamesFilterContext)
+  const { state: gamesState } = useContext(GamesContext)
   const { state: betsState } = useContext(BetsContext)
 
   const token = localStorage.getItem('token')
@@ -19,22 +19,12 @@ const Lottery: React.FC<{}> = (props) => {
   }
 
   useEffect(() => {
-    setGamesFilterState({ games: betsState, gameActive: gamesFilterState.gameActive })
-  }, [betsState, gamesFilterState.gameActive, setGamesFilterState])
+    setBetsFilterState({ bets: betsState, gameActive: betsFilterState.gameActive })
+  }, [betsState, betsFilterState.gameActive, setBetsFilterState])
 
   const onFilterHandler = (name: string) => {
-    name === 'All' ? setGamesFilterState({ games: betsState, gameActive: '' })
-      : setGamesFilterState({ games: betsState, gameActive: name })
-  }
-
-  const getDiffGames = (games: Game[]) => {
-    const diffGames: DiffGames[] = []
-    games.forEach((game) => {
-      if (diffGames.findIndex((value) => value.name === game.name) === -1) {
-        diffGames.push({ name: game.name, color: game.color })
-      }
-    })
-    return diffGames
+    name === 'All' ? setBetsFilterState({ bets: betsState, gameActive: '' })
+      : setBetsFilterState({ bets: betsState, gameActive: name })
   }
 
   return <div>
@@ -55,17 +45,17 @@ const Lottery: React.FC<{}> = (props) => {
               key={'all'} >
               All
             </div>}
-            {getDiffGames(betsState).map((bet, index) => {
+            {gamesState.map((game, index) => {
               return <div className="col m-2 text-center" style={
                 {
-                  color: bet.color,
-                  border: `2px solid ${bet.color}`,
+                  color: game.color,
+                  border: `2px solid ${game.color}`,
                   borderRadius: '45%',
                   cursor: 'pointer'
                 }
-              } onClick={onFilterHandler.bind(this, bet.name)}
+              } onClick={onFilterHandler.bind(this, game.name)}
                 key={index} >
-                {bet.name}
+                {game.name}
               </div>
             })}
           </div>
@@ -75,28 +65,28 @@ const Lottery: React.FC<{}> = (props) => {
         </div>
       </div>
       <div className="row">
-        <div>
+        <div style={{ maxHeight: '65vh', overflowY: 'auto', maxWidth: 'max-content' }}>
           {
-            gamesFilterState.gameActive === '' ?
-              betsState.map((game, index) => {
-                return <GameItem
+            betsFilterState.gameActive === '' ?
+              betsState.map((bet, index) => {
+                return <BetItem
                   key={index}
-                  numbers={game.numbers}
-                  date={game.date}
-                  price={game.price}
-                  name={game.name}
-                  color={game.color} />
+                  numbers={bet.numbers.toString()}
+                  date={bet.date}
+                  price={bet.price}
+                  name={bet.name}
+                  color={bet.color} />
               })
               :
-              gamesFilterState.games.map((game, index) => {
-                if (game.name === gamesFilterState.gameActive) {
-                  return <GameItem
+              betsFilterState.bets.map((bet, index) => {
+                if (bet.name === betsFilterState.gameActive) {
+                  return <BetItem
                     key={index}
-                    numbers={game.numbers}
-                    date={game.date}
-                    price={game.price}
-                    name={game.name}
-                    color={game.color} />
+                    numbers={bet.numbers.toString()}
+                    date={bet.date}
+                    price={bet.price}
+                    name={bet.name}
+                    color={bet.color} />
                 }
               })
           }

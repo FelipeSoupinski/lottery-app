@@ -9,7 +9,6 @@ type propsGamesContext = {
 const DEFAULT_VALUE = {
   state: [
     {
-      numbers: '01, 02, 03, 04, 05, 06, 07, 13',
       date: '30/11/2020',
       price: 2.5,
       name: 'Lotofácil',
@@ -18,7 +17,6 @@ const DEFAULT_VALUE = {
       max_number: 6
     },
     {
-      numbers: '01, 02, 03, 04, 05, 06, 07, 13',
       date: '30/11/2020',
       price: 3.5,
       name: 'Megasena',
@@ -27,7 +25,6 @@ const DEFAULT_VALUE = {
       max_number: 7
     },
     {
-      numbers: '01, 02, 03, 04, 05, 06, 07, 13',
       date: '30/11/2020',
       price: 4.5,
       name: 'Lotomania',
@@ -36,14 +33,13 @@ const DEFAULT_VALUE = {
       max_number: 20
     },
     {
-      numbers: '01, 02, 03, 04, 05, 06, 07, 13',
-      date: '30/11/2020',
-      price: 4.5,
-      name: 'Lotomania',
-      color: '#f79c31',
-      qtde: 50,
-      max_number: 20
-    },
+      date: '30/11/2021',
+      price: 3.75,
+      name: 'Lotoinski',
+      color: '#3e7f2a',
+      qtde: 35,
+      max_number: 14
+    }
   ],
   setState: () => { }
 }

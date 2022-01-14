@@ -1,19 +1,22 @@
 import { GamesContextProvider } from "./GamesContext";
 import { CartContextProvider } from "./CartContext";
 import { NewBetContextProvider } from './NewBetContext';
-import { GamesFilterContextProvider } from "./GamesFilterContext";
+import { BetsFilterContextProvider } from "./BetsFilterContext";
+import { BetsContextProvider } from "./BetsContext";
 
 const GlobalContext: React.FC = ({ children }) => {
   return (
-  <GamesContextProvider>
-    <CartContextProvider>
-      <NewBetContextProvider>
-        <GamesFilterContextProvider>
-          {children}
-        </GamesFilterContextProvider>
-      </NewBetContextProvider>
-    </CartContextProvider>
-  </GamesContextProvider>)
+    <GamesContextProvider>
+      <BetsContextProvider>
+        <CartContextProvider>
+          <NewBetContextProvider>
+            <BetsFilterContextProvider>
+              {children}
+            </BetsFilterContextProvider>
+          </NewBetContextProvider>
+        </CartContextProvider>
+      </BetsContextProvider>
+    </GamesContextProvider>)
 }
 
 export default GlobalContext;

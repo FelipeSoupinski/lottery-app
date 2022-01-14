@@ -1,6 +1,5 @@
 class Game {
   constructor(
-    public numbers: string,
     public date: string,
     public price: number,
     public name: string,
