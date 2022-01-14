@@ -17,7 +17,7 @@ const Navbar: React.FC<{}> = () => {
         </div>
         <div className="col-4" style={{textAlign: 'start'}}>
           {location.pathname === '/new-bet' && 
-            <Link to="/" onClick={logoutHandler}><span className="gray">Home</span></Link>}
+            <Link to="/home"><span className="gray">Home</span></Link>}
         </div>
           <div className="col-4" style={{textAlign: 'end'}}>
             <span className="gray">Account</span>
