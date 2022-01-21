@@ -8,7 +8,7 @@ const BetsList: React.FC = () => {
   const { state: betsState } = useContext(BetsContext)
 
   return <div className="row">
-    <div style={{ maxHeight: '65vh', overflowY: 'auto', maxWidth: 'max-content' }}>
+    <div id="betsList" style={{ maxHeight: '65vh', overflowY: 'auto', maxWidth: 'max-content' }}>
       {
         betsFilterState.gameActive === '' ?
           betsState.map((bet, index) => {

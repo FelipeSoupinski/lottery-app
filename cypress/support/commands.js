@@ -23,3 +23,25 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('insertBets', () => {
+  cy.visit('http://localhost:3000/login') 
+  cy.get('#email').focus().type('any_email@mail.com')
+  cy.get('#password').focus().type('any_password')
+  cy.get('.btn').click()
+  cy.get('.green').click()
+  cy.get('#Lotofácil').click()
+  cy.get('#complete').click()
+  cy.get('#addtocart').click()
+  cy.get('#Megasena').click()
+  cy.get('#complete').click()
+  cy.get('#addtocart').click()
+  cy.get('#Lotomania').click()
+  cy.get('#complete').click()
+  cy.get('#addtocart').click()
+  cy.get('#Lotoinski').click()
+  cy.get('#complete').click()
+  cy.get('#addtocart').click()
+  cy.get('#save').click()
+})

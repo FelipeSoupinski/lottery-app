@@ -15,7 +15,7 @@ const FilterGames: React.FC = () => {
 
   return <div className="col-7 gray-sm">Filters:
     <div className="row">
-      {<div className="col m-2 text-center" style={
+      {<div id="allBets" className="col m-2 text-center" style={
         {
           color: 'black',
           border: '2px solid black',
@@ -27,7 +27,7 @@ const FilterGames: React.FC = () => {
         All
       </div>}
       {gamesState.map((game, index) => {
-        return <div className="col m-2 text-center" style={
+        return <div id={game.name} className="col m-2 text-center" style={
           {
             color: game.color,
             border: `2px solid ${game.color}`,

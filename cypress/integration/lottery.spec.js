@@ -44,7 +44,7 @@ describe('Lottery', () => {
     cy.url().should('include', '/login')
   })
 
-  it('Should create a random bet', () => {
+  it('Should create and save a random bet', () => {
     cy.get('#email').focus().type('any_email@mail.com')
     cy.get('#password').focus().type('any_password')
     cy.get('.btn').click()
@@ -53,6 +53,19 @@ describe('Lottery', () => {
     cy.get('#complete').click()
     cy.get('#addtocart').click()
     cy.get('.card-body').find('.p-3 > :nth-child(1)')
+    cy.get('#save').click()
+    cy.url().should('include', '/home')
+    cy.get('#betsList').find('#betMegasena')
+  })
+
+  it('Should filter the bets', () => {
+    cy.insertBets()
+    cy.get('#Megasena').click()
+    cy.get('#betsList').find('#betMegasena')
+    cy.get('#Lotoinski').click()
+    cy.get('#betsList').find('#betLotoinski')
+    cy.get('#Lotomania').click()
+    cy.get('#betsList').find('#betLotomania')
   })
 
 })

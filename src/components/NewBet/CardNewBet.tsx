@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import BetsContext from "../../utils/Context/BetsContext"
 import CartContext from "../../utils/Context/CartContext"
 import CartItem from "./CartItem"
@@ -8,9 +8,12 @@ const CardNewBet: React.FC<{}> = (props) => {
   const { state: cartState, setState: setCartState } = useContext(CartContext)
   const { state: betsState, setState: setBetsState } = useContext(BetsContext)
 
+  let navigate = useNavigate()
+
   const onSaveHandler = () => {
     setBetsState([...betsState, ...cartState.bets])
     setCartState({ bets: [], total: 0 })
+    navigate('/home')
   }
 
   return <div className="card mt-5">

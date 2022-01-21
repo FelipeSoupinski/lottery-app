@@ -12,7 +12,7 @@ const BetItem: React.FC<{
   }>
     <div className="row">{props.numbers}</div>
     <div className="row">{props.date} - (R${props.price})</div>
-    <div className="row" style={{ color: props.color }}>{props.name}</div>
+    <div id={'bet'+props.name} className="row" style={{ color: props.color }}>{props.name}</div>
   </div>
 };
 
