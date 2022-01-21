@@ -49,7 +49,7 @@ const AddToCart: React.FC<{}> = () => {
   }
 
   return <div className="col">
-    <button className="btn btn-success" onClick={addToCartHandler}>
+    <button id="addtocart" className="btn btn-success" onClick={addToCartHandler}>
       Add to cart
     </button>
   </div>

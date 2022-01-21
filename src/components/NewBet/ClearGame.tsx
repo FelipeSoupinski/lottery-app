@@ -12,7 +12,7 @@ const ClearGame: React.FC<{}> = () => {
   }
 
   return <div className="col">
-    <button className="btn btn-outline-success" onClick={clearGameHandler}>
+    <button id="clear" className="btn btn-outline-success" onClick={clearGameHandler}>
       Clear Game
     </button>
   </div>

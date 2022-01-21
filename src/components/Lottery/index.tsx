@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import BetsFilterContext from "../../utils/Context/BetsFilterContext";
 import BetsContext from "../../utils/Context/BetsContext";

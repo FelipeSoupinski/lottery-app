@@ -1,9 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ForgetPasswordCard: React.FC = () => {
+  let navigate = useNavigate();
+
+  const onSubmit = () => {
+    navigate('/login')
+  }
+
   return <div className="card">
     <div className="card-body">
-      <form>
+      <form onSubmit={onSubmit}>
         <div className='row'>
           <input 
           type="email" 

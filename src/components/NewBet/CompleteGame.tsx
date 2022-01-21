@@ -23,7 +23,7 @@ const CompleteGame: React.FC<{}> = () => {
   }
 
   return <div className="col">
-    <button className="btn btn-outline-success" onClick={completeGameHandler}>
+    <button id="complete" className="btn btn-outline-success" onClick={completeGameHandler}>
       Complete Game
     </button>
   </div>

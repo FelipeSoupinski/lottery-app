@@ -18,7 +18,7 @@ const ChooseGame: React.FC<{}> = () => {
   return <div className="row mt-1">
     <p>Choose a game</p>
     {betsState.map((bet, index) => {
-      return <div className="col-2 m-1 p-1 text-center" style={
+      return <div id={bet.name} className="col-2 m-1 p-1 text-center" style={
         {
           color: bet.color,
           border: `2px solid ${bet.color}`,

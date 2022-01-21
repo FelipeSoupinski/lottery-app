@@ -33,7 +33,7 @@ const CardNewBet: React.FC<{}> = (props) => {
     </div>
     <div className="card-footer text-center">
       <Link to="/">
-        <button className="btn btn-outline-success" onClick={onSaveHandler}>
+        <button id="save" className="btn btn-outline-success" onClick={onSaveHandler}>
           Save
         </button>
       </Link>
